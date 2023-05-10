@@ -1,39 +1,30 @@
 {
-  "name": "programacion-backend-39680-jose-ulloa-diaz",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "backend-coderhouse-client",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "dev": "vite",
+    "build": "vite build --mode production",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jud1/39680-Programaci-n-Backend.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jud1/39680-Programaci-n-Backend/issues"
-  },
-  "homepage": "https://github.com/jud1/39680-Programaci-n-Backend#readme",
   "dependencies": {
-    "bcrypt": "^5.1.0",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.5",
-    "mongoose-paginate-v2": "^1.7.1",
-    "nodemailer": "^6.9.1",
-    "nodemon": "^2.0.22",
-    "passport": "^0.6.0",
-    "passport-jwt": "^4.0.1",
-    "shortid": "^2.2.16",
-    "socket.io": "^4.6.1"
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
+    "js-cookie": "^3.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.11.0",
+    "react-toastify": "^9.1.2",
+    "redux": "^4.2.1",
+    "uikit": "^3.16.13"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "sass": "^1.60.0",
+    "vite": "^4.2.0"
   }
 }
