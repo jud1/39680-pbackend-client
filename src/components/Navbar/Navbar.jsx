@@ -18,7 +18,6 @@ const Navbar = () => {
    const dispatch = useDispatch()
    const user = useSelector(selectUser)
    const activeClassName = "uk-text-warning"
-   console.log(user)
    
    useEffect(() => {
 

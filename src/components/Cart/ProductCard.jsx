@@ -31,7 +31,7 @@ const ProductCard = ({props}) => {
 
    const handleRemoveProduct = async evt => {
       evt.preventDefault()
-      await fetchProductAction(_id, '/carts/removeproduct/', 'DELETE')
+      await fetchProductAction(_id, `/carts/product/${_id}`, 'DELETE')
       navigate(0)
    }
 

@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from "react"
 import Cookies from 'js-cookie'
+import envBox from '../../config'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Button from "../../components/Button/Button"
 
 const Messages = () => {
    const datForm = useRef()
    const [messages, setMessages] = useState(null)
    const [error, setError] = useState(null)
-   const coockie = Cookies.get(import.meta.env.VITE_COOKIE_SESSION_NAME)
+   const coockie = Cookies.get(envBox.cookieName)
 
    useEffect(() => {
       const fetchData = async url => {
@@ -18,19 +21,18 @@ const Messages = () => {
                }
             })
             if (!response.ok) {
-               throw new Error (`
-                  Error ${response.status}: ${response.statusText}
-               `)
+               throw new Error (`Error ${response.status}: ${response.statusText}`)
             }
 
-            const responseData = await response.json()
-            setMessages(responseData)
+            const data = await response.json()
+            setMessages(data.docs)
          }
          catch(error) {
             setError(error.message)
+            toast.error(error.message, { position: toast.POSITION.BOTTOM_CENTER })
          }
       }
-      fetchData(`${import.meta.env.VITE_API_URL}/messages`)
+      fetchData(`${envBox.apiUrl}/messages`)
    }, [])
 
    const handleClick = evt => {
@@ -48,20 +50,21 @@ const Messages = () => {
                   },
                   body: JSON.stringify(message),
                })
-               if (!response.ok) {
-                  throw new Error (`
-                     Error ${response.status}: ${response.statusText}
-                  `)
-               }
-               const responseData = await response.json()
-               setMessages(responseData)
+               
+               if (!response.ok) throw new Error (`Error ${response.status}: ${response.statusText}`)
+
+               const data = await response.json()
+               setMessages(data.docs)
             }
-            catch (error) {
-               setError(error.message)
+            catch (error) { 
+               setError(error.message) 
+               toast.error(error.message, { position: toast.POSITION.BOTTOM_CENTER })
             }
          } 
-         fetchData(`${import.meta.env.VITE_API_URL}/messages`)
-      } else console.log('message not sended')
+         fetchData(`${envBox.apiUrl}/messages`)
+      } else {
+         console.log('message not sended')
+      }
    }
 
    return (

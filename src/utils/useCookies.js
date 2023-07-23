@@ -13,11 +13,10 @@ const clearSessionCookie = () => {
 
 const fetchCookie = async () => {
 
-   const URL = `${import.meta.env.VITE_API_URL}/sessions/usersimple`
+   const URL = `${import.meta.env.VITE_API_URL}/sessions/current`
    const sessionCookie = getSessionCookie()
 
    try {
-      console.log('fetchCookie')
       const response = await fetch(URL, {
          headers: {
             "Content-Type": "application/json", 
