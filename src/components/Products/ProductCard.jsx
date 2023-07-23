@@ -9,6 +9,7 @@ import Button from '../Button/Button'
 import envBox from '../../config.js';
 
 const ProductCard = (props) => {
+   const { name, description, price, sku, stock, _id } = props.props
    // get data from redux (if exist) and show button add cart below
    const user = useSelector(selectUser)
    const navigate = useNavigate()
@@ -16,7 +17,7 @@ const ProductCard = (props) => {
    // Fetch on button
    const handleAddProduct = async evt => {
       evt.preventDefault()
-      const response = await fetch(`${envBox.apiUrl}/carts/product/${props.props._id}`, {
+      const response = await fetch(`${envBox.apiUrl}/carts/product/${_id}`, {
          method: 'POST',
          headers: {
             "Content-Type": "application/json",
@@ -28,12 +29,10 @@ const ProductCard = (props) => {
          toast.error(error.message, { position: toast.POSITION.BOTTOM_CENTER })
       }
       else {
+         toast.success(`Product "${name}" added to cart`, { position: toast.POSITION.BOTTOM_CENTER })
          navigate('/cart')
       }
-
    }
-
-   const { name, description, price, sku, status, stock, category } = props.props
 
    return (
 

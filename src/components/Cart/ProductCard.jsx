@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import Button from '../Button/Button'
 import Cookies from 'js-cookie'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductCard = ({props}) => {
    const navigate = useNavigate()
@@ -32,7 +34,8 @@ const ProductCard = ({props}) => {
    const handleRemoveProduct = async evt => {
       evt.preventDefault()
       await fetchProductAction(_id, `/carts/product/${_id}`, 'DELETE')
-      navigate(0)
+      toast.error(`Product "${name}" remove from the cart`, { position: toast.POSITION.BOTTOM_CENTER })
+      navigate('/')
    }
 
    return (
