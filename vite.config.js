@@ -7,7 +7,7 @@ export default defineConfig({
    server: {
       host: true,
       proxy: {
-         '/api': 'https://39680-pbackend-server-production.up.railway.app/api'
+         '/api': 'https://39680-pbackend-server-production.up.railway.app'
       }
    }
 })
