@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
 import ProductCard from "./ProductCard"
 import Cookies from 'js-cookie'
+import envBox from '../../config'
 import Button from "../Button/Button"
 
 const Products = () => {
@@ -15,7 +16,7 @@ const Products = () => {
             const response = await fetch(url, {
                headers: {
                   "Content-Type": "application/json",
-                  "Authorization": `Bearer ${Cookies.get(import.meta.env.VITE_COOKIE_SESSION_NAME)}`,
+                  "Authorization": `Bearer ${Cookies.get(envBox.cookieName)}`,
                },
                /* credentials: 'include' */
             })
